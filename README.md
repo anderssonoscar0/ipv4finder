@@ -1,7 +1,7 @@
 
 # IPv4Finder
 
-A python3 script that gets your internal ipv4 adress and sens it to slack
+A python3 script that gets your internal ipv4 adress and sends it to slack.
 
 
 
