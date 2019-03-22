@@ -1,7 +1,8 @@
 import socket
 import os
-from slackclient import SlackClient
 import configparser
+import requests
+import json
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -13,14 +14,8 @@ ipv4 = s.getsockname()[0]
 s.close()
 print('My internal ipv4 adress is: ' + ipv4)
 
-
-
-#Send it to slack
-slack_token = os.environ["SLACK_API_TOKEN"]
-sc = SlackClient(slack_token)
-
-sc.api_call(
-  "chat.postMessage",
-  channel="C0XXXXXX",
-  text="Hello from Python! :tada:"
-)
+headers = {'content-type': 'application/json'}
+url = config["DEFAULT"]["SLACK_HOOK_URL"]
+payload = {"text": ipv4}
+r = requests.post(url, data=json.dumps(payload), headers=headers)
+print(r.status_code, r.reason)
