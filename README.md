@@ -1,8 +1,13 @@
 
 # IPv4Finder
 
-A python script that gets your internal ipv4 adress and send it to slack
+A python3 script that gets your internal ipv4 adress and send it to slack
 
+
+
+### Installation
+
+Run ```npm install requests```
 ### Run on startup (Ubuntu 18.04)
 
 Clone the repository into ```/etc/```
