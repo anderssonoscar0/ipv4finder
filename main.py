@@ -4,6 +4,7 @@ import configparser
 import requests
 import json
 
+# Import config file
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -12,8 +13,8 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 ipv4 = s.getsockname()[0]
 s.close()
-print('My internal ipv4 adress is: ' + ipv4)
 
+# Send slack message
 headers = {'content-type': 'application/json'}
 url = config["DEFAULT"]["SLACK_HOOK_URL"]
 payload = {"text": ipv4}
